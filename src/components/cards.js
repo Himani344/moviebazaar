@@ -1,110 +1,80 @@
-// import * as React from 'react';
-// import Card from '@mui/material/Card';
-// import CardActions from '@mui/material/CardActions';
-// import CardContent from '@mui/material/CardContent';
-// import CardMedia from '@mui/material/CardMedia';
-// import Button from '@mui/material/Button';
-// import Typography from '@mui/material/Typography';
-
-//  function ImgMediaCard() {
-//   return (
-//     <Card className='card1' sx={{ maxWidth: 400 }}>
-//       <CardMedia className='black'
-//         component="img"
-//         alt="green iguana"
-//         height="250"
-//         image="download.jpg"
-//       />
-//       <CardContent>
-//         <Typography gutterBottom variant="h5" component="div">
-//         Black Demon
-//         </Typography>
-//         <Typography variant="body2" color="text.secondary">
-//           a stranded family on a crumbling oil rig in Baja faces off against a vengeful megalodon shark.
-//         </Typography>
-//       </CardContent>
-      
-//     </Card>
-    
-//   );
-// }
-// export default ImgMediaCard;
 import * as React from 'react';
-import { experimentalStyled as styled } from '@mui/material/styles';
-// import Box from '@mui/material/Box';
-import Paper from '@mui/material/Paper';
-import Grid from '@mui/material/Grid';
-import { Card, CardContent, CardMedia, Container, Typography } from '@mui/material';
-import { Moviedata } from '../constants/moviedata';
-import {Link}from "react-router-dom";
-import { useState } from 'react';
-import axios from 'axios';
-import { useEffect } from 'react';
-import MovieData from '../constants/moviedata';
+import ImageList from '@mui/material/ImageList';
+import ImageListItem from '@mui/material/ImageListItem';
+import ImageListItemBar from '@mui/material/ImageListItemBar';
 
-const Item = styled(Paper)(({ theme }) => ({
-  backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
-  ...theme.typography.body2,
-  padding: theme.spacing(2),
-  textAlign: 'center',
-  color: theme.palette.text.secondary,
-}));
-
-export default function ResponsiveGrid() {
-
-
-    const[movieData,setmovieData]=useState();
-
-   
-
-const options = {
-  method: 'GET',
-  url: 'https://imdb-top-100-movies.p.rapidapi.com/',
-  headers: {
-    'X-RapidAPI-Key': 'a486ff175bmsh9332c6c8e28ee38p19f077jsn2c6904fb5e55',
-    'X-RapidAPI-Host': 'imdb-top-100-movies.p.rapidapi.com'
-  }
-};
-
-async function getMoviedata(){
-    try {
-        const response = await axios.request(options);
-        console.log(response.data);
-        setmovieData(response.data);
-    } catch (error) {
-        console.error(error);
-    }
-}
-useEffect(()=>{getMoviedata();},[]);
-
+ function HimImageList() {
   return (
-    <Grid conatiner spacing={2}>
-        {MovieData&&
-        MovieData.map((movie,index)=>(
-            <Grid item xs={12} sm={6} md={4} key={index}>
-                <Link to={'/movie/${movie.id}'}>
-                    <Card className='cards'>
-                        <CardMedia
-                        component="img"
-                        height="300"
-                        width="300"
-                        image={movie.image}
-                        alt={movie.title}
-/>
-<CardContent>
-    <Typography variant='h6'>{movie.title}</Typography>
-
-</CardContent>
-                        </Card>
-                </Link>
-        
-    </Grid>
-)
-
-)
+    <ImageList sx={{ width: 1300, height: 1120 }} cols={4} rowHeight={364}>
+      {itemData.map((item) => (
+        <ImageListItem key={item.img}>
+          <img
+            src={`${item.img}?w=248&fit=crop&auto=format`}
+            srcSet={`${item.img}?w=248&fit=crop&auto=format&dpr=2 2x`}
+            alt={item.title}
+            loading="lazy"
+          />
+          <ImageListItemBar
+            title={item.title}
+            
+          
+          />
+        </ImageListItem>
+      ))}
+    </ImageList>
+  );
 }
-</Grid>
-  )}
 
+export default HimImageList;
 
- 
+const itemData = [
+  {
+    img: 'https://th.bing.com/th/id/OIP.PMRgTc7QJrf_nBSQY5gHGgHaEo?pid=ImgDet&rs=1',
+    title: 'Sanam Teri kasam',
+  },
+  {
+    img: 'https://2.bp.blogspot.com/-FRxJmbGM1jc/Vpd7kiEqlWI/AAAAAAAAAY0/ZmmcTXoiVK8/s1600/HD-3-Idiots-Wallpapers.jpg',
+    title: '3 Idiots',
+
+  },
+  {
+    img: 'https://th.bing.com/th/id/OIP.XLpaRzfWDIj61NUXjone8gHaKl?w=119&h=180&c=7&r=0&o=5&pid=1.7',
+    title: 'Hum Aapke Hai Kaun',
+  },
+  {
+    img: 'https://th.bing.com/th/id/OIP.b4KuUXQtSwXwpHTjSMGpfwHaEK?pid=ImgDet&rs=1',
+    title: 'Hum Sath Sath Hai',
+  },
+  {
+    img: 'https://th.bing.com/th/id/OIP.DxjCIR4SNx8odMkJr1P8aQHaFb?w=238&h=180&c=7&r=0&o=5&pid=1.7',
+    title: 'Mai Hu Na',
+  },
+  {
+    img: 'https://th.bing.com/th/id/OIP.Iu_k4ovONUqw1GhMcN3q7AHaFj?pid=ImgDet&rs=1',
+    title: 'Kal Ho Na Ho',
+  },
+  {
+    img: 'https://wartalaap.com/wp-content/uploads/2021/03/King-768x432.jpg',
+    title: 'Kuch Kuch Hota hai',
+  },
+  {
+    img: 'https://th.bing.com/th/id/OIP.qSjUbtJxNRtgzQFkvJXxEwHaKr?w=178&h=257&c=7&r=0&o=5&pid=1.7',
+    title: 'Barfi',
+  },
+  {
+    img: 'https://th.bing.com/th/id/OIP.KLIdd6Aus_niFnVAUsYK8AHaEo?w=178&h=111&c=7&r=0&o=5&pid=1.7',
+    title: '2 States',
+  },
+  {
+    img: 'https://th.bing.com/th/id/OIP.EyBCVARq5754WI-krjXmnQHaEK?pid=ImgDet&rs=1',
+    title: 'Kabhi Khushi Kabhi Gham',
+  },
+  {
+    img: 'https://th.bing.com/th/id/R.f0f92412b8b9c411af03cb4823eace22?rik=S%2fGKUsHLmnRIcw&riu=http%3a%2f%2fecx.images-amazon.com%2fimages%2fI%2f51Z0eLVX-tL.jpg&ehk=9KdNS5r00r4UbO4JOUe5xlo0kelu6D2PjFGl5s%2fL9cs%3d&risl=&pid=ImgRaw&r=0&sres=1&sresct=1',
+    title: 'Talaash',
+  },
+  {
+    img: 'https://th.bing.com/th/id/OIP.GpLmdK8VeOYlUqcUDy_zsQHaDt?pid=ImgDet&rs=1',
+    title: 'Baby',
+  },
+];

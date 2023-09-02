@@ -1,20 +1,18 @@
-import { useEffect, useState } from "react";
 import ImgMediaCard from "./cards";
-import ColorInversionFooter from "./common/footer";
-import DrawerAppBar from "./common/header";
-import axios from "axios";
-
+import { Card, ImageList, Paper } from "@mui/material";
+import SearchAppBar from "./common/header";
+import HimImageList from "./cards";
+import Footer from "./common/footer";
+import { Route } from "@mui/icons-material";
 
 
 function Homepage(){
     
-    return(<>
-    <DrawerAppBar/>
-    
-    <ImgMediaCard ></ImgMediaCard>
-{/* <ColorInversionFooter></ColorInversionFooter> */}
-
-
+    return(
+    <>
+      <SearchAppBar/>
+     <HimImageList/>
+     <Footer/>
     </>
     );
 };
