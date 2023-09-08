@@ -12,6 +12,11 @@
     animation: App-logo-spin infinite 20s linear;
   }
 }
+.poster{
+  height: 75px;
+  margin-top: 20px;
+
+}
 
 .App-header {
   background-color: #282c34;
@@ -36,9 +41,36 @@
     transform: rotate(360deg);
   }
 }
-/* .cards{
-  height: 300;
-  width: 300;
-  column-gap: 8px;
-  display: grid;
-} */
+.container{
+  margin-top: 140px;
+  margin-left: 400px;
+  background-color: #282c34;
+  height: 400px;
+  width: 500px;
+  border-radius: 10px;
+}
+.sign{
+  color: blue;
+  text-align: center;
+  padding-top: 60px;
+}
+.input{
+  height: 36px;
+    width: 345px;
+    border-radius: 8px;
+    border: 0px;
+    margin-left: 75px;
+}
+.submit{
+  background-color: blue;
+  color: white;
+  border: 0px;
+  border-radius: 8px;
+  height: 40px;
+  width: 347px;
+  margin-left: 75px;
+  font-size: 14px;
+}
+.labels{
+  margin-left: 135px;
+}
